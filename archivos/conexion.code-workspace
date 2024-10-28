@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "conexion",
+			"path": ".."
+		},
+		{
+			"name": "images",
+			"path": "../../../../../../Desktop/PeliculasWeb-main/images"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "conexion"
+	}
+}

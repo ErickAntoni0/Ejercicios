@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <!-- Formulario de Registro -->
+        <div class="form-container sign-up">
+            <form id="signup-form">
+                <h1>Crear una cuenta</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <span>O utiliza tu correo electrónico</span>
+                <input type="text" id="signup-name" name="name" placeholder="Nombre" required>
+                <input type="email" id="signup-email" name="email" placeholder="Email" required>
+                <input type="password" id="signup-password" name="password" placeholder="Contraseña" required>
+                <!-- Confirmación de contraseña para evitar errores -->
+                <input type="password" id="signup-confirm-password" placeholder="Confirma tu contraseña" required>
+                <button type="submit">Crear una cuenta</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Inicio de Sesión -->
+        <div class="form-container sign-in">
+            <form id="signin-form">
+                <h1>CineTopic</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+                <span>Utiliza tu correo electrónico</span>
+                <input type="email" id="signin-email" placeholder="Email" required>
+                <input type="password" id="signin-password" placeholder="Contraseña" required>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit" class="btn">Iniciar Sesión</button>
+            </form>
+        </div>
+
+        <!-- Panel de Cambio de Formulario -->
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Bienvenido de vuelta</h1>
+                    <p>Ingresa tus datos para crear una cuenta</p>
+                    <button class="hidden" id="login">Inicia Sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hola y Bienvenido!</h1>
+                    <p>Regístrate con tus datos personales para utilizar todas las funciones del sitio</p>
+                    <button class="hidden" id="register">Regístrate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica de registro
+        document.getElementById('signup-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Si el registro fue exitoso
+                    alert('Cuenta creada con éxito. Por favor, inicia sesión.');
+                    document.getElementById('signup-form').reset(); // Limpia los campos
+                } else {
+                    // Si hay un error, muestra el mensaje
+                    alert(result.message || 'Error al crear la cuenta.');
+                }
+            } catch (error) {
+                alert('Error en el servidor, intenta más tarde.');
+                console.error('Error:', error);
+            }
+        });
+
+
+        // Lógica de inicio de sesión
+        document.getElementById('signin-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/login', { // Cambiar al puerto del backend (3000)
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    window.location.href = "/Peliculas.html"; // Redirigir al frontend (puerto 3001)
+                } else {
+                    alert(result.message || 'Correo o contraseña incorrectos.');
+                }
+            } catch (error) {
+                alert('Error en el servidor, intenta más tarde.');
+                console.error('Error:', error);
+            }
+        });
+
+    </script>
+    <script src="/main.js"></script>
+</body>
+
+</html>
