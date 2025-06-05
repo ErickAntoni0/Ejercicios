@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Análisis FODA | IA</title>
+    <style>
+        .foda-container {
+            padding: 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .foda-section {
+            background: #171717;
+            padding: 30px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .foda-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(230, 124, 53, 0.2);
+        }
+
+        .foda-section h2 {
+            color: #e99218;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .foda-section ul {
+            list-style: none;
+        }
+
+        .foda-section li {
+            color: #ccc;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(83, 97, 60, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .foda-section li:hover {
+            background: rgba(220, 158, 34, 0.2);
+            transform: scale(1.02);
+        }
+
+        .interactive-element {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-element::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(10, 41, 120, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .interactive-element:hover::before {
+            left: 100%;
+        }
+
+        @media screen and (max-width: 992px) {
+            .foda-container {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <i class="ri-bard-fill"></i>
+        </div>
+        <div class="nav-links">
+            <marquee behavior="scroll" direction="up" scrollamount="2"><a href="index.html">Inicio</a></marquee>
+            <marquee behavior="scroll" direction="down" scrollamount="2"><a href="#foda">FODA</a></marquee>
+            <div class="separator"></div>
+            <marquee behavior="alternate" scrollamount="3">
+                <p>Análisis IA</p>
+            </marquee>
+        </div>
+        <div class="login">
+            <marquee behavior="scroll" direction="right" scrollamount="3"><a href="#">Iniciar Sesión</a></marquee>
+            <img src="assets/login.JPG">
+        </div>
+    </nav>
+
+    <div class="prompt-sec">
+        <marquee behavior="alternate" scrollamount="5">
+            <h1>ANÁLISIS FODA DE LA IA</h1>
+        </marquee>
+    </div>
+
+    <div class="foda-container" id="foda">
+        <div class="foda-section interactive-element">
+            <marquee behavior="scroll" direction="left" scrollamount="3">
+                <h2>Fortalezas</h2>
+            </marquee>
+            <ul>
+                <li>Alta eficiencia en procesamiento de datos</li>
+                <li>Automatización de tareas complejas</li>
+                <li>Mejora continua del aprendizaje</li>
+                <li>Capacidad de análisis predictivo</li>
+            </ul>
+        </div>
+
+        <div class="foda-section interactive-element">
+            <marquee behavior="scroll" direction="right" scrollamount="3">
+                <h2>Oportunidades</h2>
+            </marquee>
+            <ul>
+                <li>Expansión en nuevos mercados</li>
+                <li>Desarrollo de nuevas aplicaciones</li>
+                <li>Colaboración con otras tecnologías</li>
+                <li>Mejora de la experiencia del usuario</li>
+            </ul>
+        </div>
+
+        <div class="foda-section interactive-element">
+            <marquee behavior="scroll" direction="left" scrollamount="3">
+                <h2>Debilidades</h2>
+            </marquee>
+            <ul>
+                <li>Dependencia de datos de calidad</li>
+                <li>Alto costo de implementación</li>
+                <li>Necesidad de actualización constante</li>
+                <li>Limitaciones en razonamiento humano</li>
+            </ul>
+        </div>
+
+        <div class="foda-section interactive-element">
+            <marquee behavior="scroll" direction="right" scrollamount="3">
+                <h2>Amenazas</h2>
+            </marquee>
+            <ul>
+                <li>Competencia creciente</li>
+                <li>Cambios regulatorios</li>
+                <li>Preocupaciones de privacidad</li>
+                <li>Riesgos de seguridad</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <div class="separator"></div>
+            <marquee behavior="scroll" direction="left" scrollamount="3">
+                <p>
+                    Copyright © 2024 Erick Muciño, Todos los derechos reservados.
+                </p>
+            </marquee>
+            <div class="separator"></div>
+        </div>
+    </footer>
+
+    <!-- Modal for FODA info -->
+    <div id="foda-modal"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+        <div
+            style="background:#171717; border-radius:30px; max-width:400px; width:90vw; padding:32px 24px; box-shadow:0 8px 32px #000; position:relative; text-align:center; border:4px solid #e99218;">
+            <button id="close-foda-modal"
+                style="position:absolute; top:12px; right:18px; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer;">&times;</button>
+            <img id="foda-modal-img" src="" alt="IA"
+                style="width:120px; height:120px; object-fit:cover; border-radius:20px; margin-bottom:18px;">
+            <h3 id="foda-modal-title" style="color:#e99218; margin-bottom:10px;"></h3>
+            <p id="foda-modal-desc" style="color:#ccc;"></p>
+        </div>
+    </div>
+
+    <script>
+        // Interactividad adicional
+        document.querySelectorAll('.foda-section').forEach(section => {
+            section.addEventListener('click', function () {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-10px)';
+                }, 200);
+            });
+        });
+
+        // Efecto de aparición al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.foda-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.5s ease';
+            observer.observe(section);
+        });
+
+        // Info for each FODA section
+        const fodaData = [
+            {
+                title: 'Fortalezas',
+                img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=400&q=80',
+                desc: 'La IA puede procesar grandes volúmenes de datos rápidamente, aprender de ellos y automatizar tareas complejas, mejorando la eficiencia y la precisión en múltiples sectores.'
+            },
+            {
+                title: 'Oportunidades',
+                img: 'https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?auto=format&fit=crop&w=400&q=80',
+                desc: 'La IA abre nuevas oportunidades en mercados emergentes, permite el desarrollo de aplicaciones innovadoras y mejora la experiencia del usuario a través de la personalización.'
+            },
+            {
+                title: 'Debilidades',
+                img: 'https://images.unsplash.com/photo-1694903110330-cc64b7e1d21d?auto=format&fit=crop&w=400&q=80',
+                desc: 'La IA depende de datos de alta calidad y requiere inversiones significativas. Además, necesita actualizaciones constantes y aún tiene limitaciones frente al razonamiento humano.'
+            },
+            {
+                title: 'Amenazas',
+                img: 'https://images.unsplash.com/photo-1625314868143-20e93ce3ff33?auto=format&fit=crop&w=400&q=80',
+                desc: 'El avance de la IA puede generar preocupaciones sobre privacidad, seguridad y regulación, además de aumentar la competencia y los riesgos de uso indebido.'
+            }
+        ];
+
+        // Modal logic
+        const modal = document.getElementById('foda-modal');
+        const modalImg = document.getElementById('foda-modal-img');
+        const modalTitle = document.getElementById('foda-modal-title');
+        const modalDesc = document.getElementById('foda-modal-desc');
+        const closeModal = document.getElementById('close-foda-modal');
+        document.querySelectorAll('.foda-section').forEach((section, idx) => {
+            section.addEventListener('click', function (e) {
+                modal.style.display = 'flex';
+                modalImg.src = fodaData[idx].img;
+                modalTitle.textContent = fodaData[idx].title;
+                modalDesc.textContent = fodaData[idx].desc;
+            });
+        });
+        closeModal.onclick = function () {
+            modal.style.display = 'none';
+        };
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+
+</html>
